@@ -8,10 +8,10 @@ app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     let nodeId = '_root'
-    let attributes = data.loadAttributes(nodeId)
-    console.log(attributes)
-    let templateName = attributes['_template'] || 'default'
-    res.render(templateName, {node: attributes})
+    let node = data.loadNode(nodeId)
+    console.log(node.attributes)
+    let templateName = node.attributes['_template'].value || 'default'
+    res.render(templateName, {'node': node})
 })
 
 app.listen(port, () => {
