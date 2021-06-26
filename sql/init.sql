@@ -14,9 +14,7 @@ CREATE INDEX IF NOT EXISTS nodes_created_at_index ON nodes(created_at);
 CREATE TABLE IF NOT EXISTS attributes (
     node_id NOT NULL REFERENCES nodes(id),
     name TEXT NOT NULL,
-    type TEXT,
-    meta TEXT,
-    value TEXT
+    value BLOB
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS attributes_nodeid_name_index ON attributes(node_id, name);
@@ -24,6 +22,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS attributes_nodeid_name_index ON attributes(nod
 CREATE TABLE IF NOT EXISTS recent (
     node_id NOT NULL REFERENCES nodes(id),
     attribute_name NOT NULL REFERENCES attributes(name),
+    type TEXT,
+    meta TEXT,
     value TEXT
 );
 
