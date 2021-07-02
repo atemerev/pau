@@ -2,10 +2,7 @@
 
 ## API examples
 
-`createNode(name, parentId, id) // returns node ID`
-
-Own ID is optional — autoincrement is returned if necessary. Error if ID 
-already exists.
+`createNode(id, parentId) // returns node ID`
 
 `setAttribute(nodeId, name, value) // returns OK`
 
@@ -26,5 +23,5 @@ and most recent values.
 
 ## List of system-level attributes
 
-`_template`: the template ID used for rendering
+`_template`: the template ID used for rendering (or even React template code itself)
 `_deleted`: if true, exclude from rendering

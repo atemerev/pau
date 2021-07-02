@@ -1,6 +1,6 @@
 const sql = require('./sql')
 
-exports.loadAttributes = function(nodeId) {
+function loadAttributes(nodeId) {
     let attributes = sql.LOAD_ATTRIBUTES.all(nodeId)
     let result = {}
     for (let e of attributes) {
@@ -10,8 +10,8 @@ exports.loadAttributes = function(nodeId) {
     return result
 }
 
-exports.loadNode = function (nodeId) {
-    let attributes = exports.loadAttributes(nodeId)
+function loadNode(nodeId) {
+    let attributes = loadAttributes(nodeId)
     if (attributes.length === 0) {
         return null;
     }
@@ -29,4 +29,8 @@ exports.loadNode = function (nodeId) {
         'children': cc
     }
     return node
+}
+
+module.exports = {
+    loadNode
 }
